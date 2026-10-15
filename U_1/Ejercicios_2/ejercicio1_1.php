@@ -1,9 +1,9 @@
 <?php
 
-// Establecer la zona horaria de España
+// Zona horaria de España
 date_default_timezone_set("Europe/Madrid");
 
-// Obtener la fecha actual
+// Formato que tendrá la fecha
 $fecha = date("l, d \d\e F \d\e Y");
 
 // Traducir el día de la semana al castellano
@@ -33,14 +33,14 @@ $meses = [
     "December" => "Diciembre"
 ];
 
-// Obtener los componentes de la fecha
+// Componentes de la fecha
 $diaSemana = date("l");
 $dia = date("d");
 $mes = date("F");
 $anio = date("Y");
 
 // Construir la fecha en castellano
-$fechaCastellano = $dias[$diaSemana] . ", " . $dia . " de " . $meses[$mes] . " de " . $anio;
+$fechaEspaniol = $dias[$diaSemana] . ", " . $dia . " de " . $meses[$mes] . " de " . $anio;
 
 ?>
 
@@ -54,7 +54,7 @@ $fechaCastellano = $dias[$diaSemana] . ", " . $dia . " de " . $meses[$mes] . " d
 
     <h1>Fecha actual</h1>
 
-    <p><?php echo $fechaCastellano; ?></p>
+    <p><?php echo $fechaEspaniol; ?></p>
 
 </body>
 </html>

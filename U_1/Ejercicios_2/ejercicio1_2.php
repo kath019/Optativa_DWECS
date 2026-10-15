@@ -8,7 +8,7 @@
 
     <h1>Tabla de números del 1 al 100</h1>
 
-    <table border="1">
+    <table border="3">
         <?php
         $numero = 1;
 

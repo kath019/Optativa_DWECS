@@ -13,22 +13,24 @@
         <label for="nombre">Introduce tu nombre:</label>
         <input type="text" name="nombre" id="nombre" required>
 
-        <br><br>
+        <br>
+        <br>
 
         <label for="edad">Introduce tu edad:</label>
         <input type="number" name="edad" id="edad" min="0" required>
 
-        <br><br>
+        <br>
+        <br>
 
         <input type="submit" value="Enviar">
 
     </form>
 
     <?php
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-        $nombre = $_POST["nombre"];
+    if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+        echo "Error, no se han recibido los datos del formulario";
+    } else {
+          $nombre = $_POST["nombre"];
         $edad = $_POST["edad"];
 
         echo "<h2>¡Hola, " . htmlspecialchars($nombre) . "!</h2>";
@@ -38,7 +40,6 @@
         } else {
             echo "Eres menor de edad.";
         }
-
     }
 
     ?>

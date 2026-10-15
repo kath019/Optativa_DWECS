@@ -51,7 +51,7 @@
 <div class="contenedor">
     <h1>Conversor de monedas</h1>
 
-    <form action="resultado.php" method="POST">
+    <form action="Resultado.php" method="POST">
         <label for="importe">Importe en euros (€):</label>
 
         <input type="number" id="importe" name="importe" step="0.01" min="0" required
