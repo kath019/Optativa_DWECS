@@ -1,37 +1,66 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi blog</title>
+
+    <title>Mi blog personal</title>
+
     <script src="../../tailwind.js"></script>
 </head>
-<body class="">
-    <header class="border-b border-white border bg-red-200 flex justify-between p-3 ">
-        <p><strong>Mi blog</strong></p>
-        <div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M3 18v-2h18v2zm0-5v-2h18v2zm0-5V6h18v2z"/>
-            </svg>
+
+<body class="bg-blue-100">
+
+    <?php
+    // El menú de navegación
+    include "includes/menu.php";
+    ?>
+
+    <main class="min-h-screen flex flex-col items-center p-8">
+
+        <h1 class="text-4xl font-bold mb-6">
+            ¡Hola! Soy Katlhyn
+        </h1>
+
+        <div class="bg-pink-100 rounded-lg shadow-lg p-6 max-w-2xl text-center">
+
+            <img
+                src="imagenes/perfil.jpeg"
+                alt="Mi fotografía personal"
+                class="w-48 h-48 object-cover rounded-full mx-auto mb-5"
+            >
+
+            <h2 class="text-2xl font-bold mb-3">
+                Sobre mí
+            </h2>
+
+            <p class="text-gray-700 mb-5">
+                Soy estudiante de Desarrollo de Aplicaciones
+                Multiplataforma. Me considero una persona creativa,
+                curiosa y con muchas ganas de aprender cosas nuevas.
+                Me gusta la preparar tartas, leer y cantar.
+            </p>
+
+            <div class="border-t pt-4">
+
+                <h3 class="font-bold text-lg mb-2">
+                    Contacto
+                </h3>
+
+                <p>Correo: katlhynnn19@gmail.com</p>
+
+            </div>
+
         </div>
-    </header>
 
-    <div class="min-h-screen w-full m-0 bg-blue-300 h-full grid grid-cols-1 justify-items-center p-4">
-        <h1 class="text text-3xl"><strong>Soy Katlhyn</strong></h1>
-        
-        <div class="border rounded-lg m-5 p-5">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio dignissimos beatae fugit, esse illo itaque tempora at ipsum rerum officia velit eligendi quisquam, provident cumque sunt id laboriosam ab dicta!
-        </div>
+    </main>
 
-        <img src="/imagenes/FONDO-MARINO.jpeg">
+    <?php
+    // El pie de página
+    include "includes/footer.php";
+    ?>
 
-        <div class="">
-            <p>Contacto:</p>
-        </div>
-        <footer>
-
-        </footer>
-    </div>
-    
 </body>
+
 </html>
