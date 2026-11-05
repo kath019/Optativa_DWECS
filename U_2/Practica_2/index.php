@@ -13,7 +13,7 @@
 <body class="bg-blue-100">
 
     <?php
-    // El menú de navegación
+    // la cabecera
     include "includes/menu.php";
     ?>
 
@@ -23,30 +23,23 @@
             ¡Hola! Soy Katlhyn
         </h1>
 
-        <div class="bg-pink-100 rounded-lg shadow-lg p-6 max-w-2xl text-center">
+        <div class="bg-pink-100 rounded-lg shadow-lg p-6 max-w-2xl text-center border border-white">
 
-            <img
-                src="imagenes/perfil.jpeg"
-                alt="Mi fotografía personal"
-                class="w-48 h-48 object-cover rounded-full mx-auto mb-5"
+            <img src="imagenes/FONDO-MARINO.jpeg" alt="Imagen del fondo marino" class="w-48 h-48 object-cover rounded-lg mx-auto mb-5"
             >
 
-            <h2 class="text-2xl font-bold mb-3">
-                Sobre mí
-            </h2>
+            <h2 class="text-2xl font-bold mb-3">Sobre mí</h2>
 
             <p class="text-gray-700 mb-5">
                 Soy estudiante de Desarrollo de Aplicaciones
                 Multiplataforma. Me considero una persona creativa,
-                curiosa y con muchas ganas de aprender cosas nuevas.
-                Me gusta la preparar tartas, leer y cantar.
+                tranquila, empática y siempre con ganas de aprender.
+                Me gusta principalmente la repostería, leer y cantar.
             </p>
 
-            <div class="border-t pt-4">
+            <div class=" border-t border-t-red-300 pt-4">
 
-                <h3 class="font-bold text-lg mb-2">
-                    Contacto
-                </h3>
+                <h3 class="font-bold text-lg mb-2">Contacto</h3>
 
                 <p>Correo: katlhynnn19@gmail.com</p>
 

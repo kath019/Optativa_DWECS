@@ -1,5 +1,5 @@
 <?php
-
+//array asociativo
 $hobbies = [
 
     "Hornear" => [
@@ -44,14 +44,14 @@ $hobbies = [
     <main class="min-h-screen p-8">
 
         <h1 class="text-4xl font-bold text-center mb-8">
-            Mis hobbies y aficiones
+            Mis hobbies 
         </h1>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
             <?php foreach ($hobbies as $nombre => $datos) { ?>
 
-                <div class="bg-pink-100 rounded-xl shadow-lg p-5">
+                <div class="bg-pink-100 rounded-xl shadow-lg p-5 border border-white">
 
                     <img
                         src="<?php echo $datos['imagen']; ?>"
@@ -67,7 +67,7 @@ $hobbies = [
                         <?php echo $datos['descripcion']; ?>
                     </p>
 
-                    <p class="text-sm text-blue-700 font-semibold">
+                    <p class="text-sm text-blue-700 font-semibold ">
                         Frecuencia: <?php echo $datos['frecuencia']; ?>
                     </p>
 
