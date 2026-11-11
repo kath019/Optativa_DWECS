@@ -24,6 +24,11 @@ $proyectos = [
         "descripcion" => "Filtrado dinámico mediante GET, Gestión completa con formularios y estadísticas.",
         "archivo" => "../Practica_1"
     ],
+    [
+        "nombre" => "Ejemplo examen",
+        "descripcion" => "Ejemplo de examen con un formulario POST y ejemplo de array asociativo.",
+        "archivo" => "../Ejemplo_examen"
+    ],
 
 ];
 
@@ -54,7 +59,7 @@ $proyectos = [
         </h1>
 
         <p class="text-center text-gray-700 mb-8">
-            Ejercicios realizados en el primer trimestre en la asignatura de Desarrollo web en servidor
+            Ejercicios realizados en el primer trimestre en la asignatura de Desarrollo Web en Servidor
         </p>
 
         <div class="max-w-4xl mx-auto grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">

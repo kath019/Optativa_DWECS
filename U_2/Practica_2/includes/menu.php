@@ -32,3 +32,8 @@ $opciones = [
     </nav>
 
 </header>
+
+<!--Si tienes que añadir una nueva página primero modifica el array asociativo de arriba y pon algo tipo "Mis asignaturas" => "misAsignaturas.php?nombre=Katlhyn%20Montoya" si hay espacios
+"Mis asignaturas" => "misAsignaturas.php?nombre=Katlhyn_Montoya" si no hay espacios
+y hay que especificar la ruta
+-->
