@@ -112,7 +112,7 @@ echo strpos($frase, "con");
 echo "<br/>";
 
 //arrays
-$peliculas = array('Batman', 'Spiderman', 'Woner Woman', 'Iron Man');
+$peliculas = array('Batman', 'Spiderman', 'Wonder Woman', 'Iron Man');
 foreach($peliculas as $p){
     echo "<li>$p</li>";
 }

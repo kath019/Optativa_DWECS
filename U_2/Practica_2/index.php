@@ -36,12 +36,15 @@
                 tranquila, empática y siempre con ganas de aprender.
                 Me gusta principalmente la repostería, leer y cantar.
             </p>
+            <p>modificar para crear una página previa "login.php" que tenga un formulario donde tengas que introducir tu nombre, contraseña y un boton de radio que te permita elegir entre tus hobbies favoritos, tambien un botón acceder en el que carga la sesion  con los datos seleccionados</p>
 
             <div class=" border-t border-t-red-300 pt-4">
 
                 <h3 class="font-bold text-lg mb-2">Contacto</h3>
 
                 <p>Correo: katlhynnn19@gmail.com</p>
+
+                <p>La información del nombre que acabas de introducirse mostrará en index.oho, cuando selecciones la opción de "mis hobbies" desde el menú solo aparecerá el seleccionado. una nueva opción de logout y volver a la pagiana login</p>
 
             </div>
 
