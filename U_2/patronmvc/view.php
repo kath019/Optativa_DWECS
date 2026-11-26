@@ -1,14 +1,10 @@
-<!--pinta HTML(no calcula nada llama al método pedido)-->
 <?php
+// Pinta HTML. No calcula nada: solo muestra lo que le da el Controlador.
 class View {
-    public function renderizar(array $config, array $elementos, string $ordenActual): void {
+
+    // CSS unificado: lo usan el listado y el detalle
+    private function estilos(): void {
         ?>
-        <!DOCTYPE html>
-        <html lang="es">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title><?php echo htmlspecialchars($config['titulo_pagina']); ?></title>
             <style>
                 body {
                     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -31,6 +27,11 @@ class View {
                     border-bottom: 2px solid #007bff;
                     padding-bottom: 10px;
                     font-size: 24px;
+                }
+                h2 {
+                    color: #1a252f;
+                    font-size: 18px;
+                    margin: 0 0 12px 0;
                 }
                 p.descripcion {
                     color: #6c757d;
@@ -89,6 +90,9 @@ class View {
                 .item-form {
                     flex-grow: 1;
                 }
+                .item-form form {
+                    margin: 0;
+                }
                 .item-titulo-btn {
                     background: none;
                     border: none;
@@ -97,6 +101,12 @@ class View {
                     font-weight: 600;
                     padding: 0;
                     text-align: left;
+                    cursor: pointer;
+                    font-family: inherit;
+                }
+                .item-titulo-btn:hover {
+                    color: #007bff;
+                    text-decoration: underline;
                 }
                 .item-subtitulo {
                     font-size: 13px;
@@ -113,7 +123,102 @@ class View {
                     white-space: nowrap;
                     border: 1px solid #e2e8f0;
                 }
+
+                /* -- Vista detalle -- */
+                .detalle-cabecera {
+                    display: flex;
+                    align-items: center;
+                    gap: 18px;
+                    border-bottom: 2px solid #007bff;
+                    padding-bottom: 12px;
+                    margin-bottom: 20px;
+                }
+                .detalle-cabecera h1 {
+                    border: none;
+                    padding: 0;
+                    margin: 0;
+                }
+                .detalle-imagen {
+                    width: 90px;
+                    height: 90px;
+                    object-fit: contain;
+                    border-radius: 8px;
+                    border: 1px solid #e2e8f0;
+                    background-color: #f8fafc;
+                }
+                .panel {
+                    background-color: #f8fafc;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 6px;
+                    padding: 15px;
+                    margin-bottom: 20px;
+                }
+                .panel p {
+                    margin: 0;
+                    color: #475569;
+                }
+                .fila-stat {
+                    margin-bottom: 12px;
+                }
+                .fila-stat-texto {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 14px;
+                    color: #334155;
+                    margin-bottom: 4px;
+                }
+                .barra-fondo {
+                    background-color: #e2e8f0;
+                    border-radius: 20px;
+                    height: 8px;
+                    overflow: hidden;
+                }
+                .barra-relleno {
+                    background-color: #007bff;
+                    height: 100%;
+                }
+                .total-resumen {
+                    font-weight: 600;
+                    color: #0f172a;
+                    margin-bottom: 15px;
+                }
+                .mensaje-vacio {
+                    color: #6c757d;
+                    font-style: italic;
+                }
+                .sub-nombre {
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: #0f172a;
+                }
+                .btn-volver {
+                    display: inline-block;
+                    margin-top: 10px;
+                    padding: 9px 18px;
+                    background-color: #007bff;
+                    color: #ffffff;
+                    text-decoration: none;
+                    border-radius: 4px;
+                    font-size: 14px;
+                    font-weight: 600;
+                }
+                .btn-volver:hover {
+                    background-color: #0069d9;
+                }
             </style>
+        <?php
+    }
+
+    /* Lista principal*/
+    public function renderizar(array $config, array $elementos, string $ordenActual): void {
+        ?>
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title><?php echo htmlspecialchars($config['titulo_pagina']); ?></title>
+            <?php $this->estilos(); ?>
         </head>
         <body>
 
@@ -147,7 +252,14 @@ class View {
                          class="item-imagen">
 
                     <div class="item-form">
-                        <div class="item-titulo-btn"><?php echo htmlspecialchars($item['nombre']); ?></div>
+                        <!-- titulo = botón dentro de un formulario POST -->
+                        <form action="index.php" method="POST">
+                            <button type="submit" name="elemento"
+                                    value="<?php echo htmlspecialchars($item['nombre']); ?>"
+                                    class="item-titulo-btn">
+                                <?php echo htmlspecialchars($item['nombre']); ?>
+                            </button>
+                        </form>
                         <div class="item-subtitulo"><?php echo htmlspecialchars($item['detalle']); ?></div>
                     </div>
 
@@ -156,6 +268,84 @@ class View {
                     </span>
                 </div>
             <?php endforeach; ?>
+        </div>
+
+        </body>
+        </html>
+        <?php
+    }
+
+    /*Vista detalle de un elemento. Recibe todo ya calculado*/
+    public function renderizarDetalle(array $config, array $elemento, array $estadisticas): void {
+        $total    = $estadisticas['total'];
+        $etiqueta = ($total === 1) ? $config['etiqueta_sing'] : $config['etiqueta_plur'];
+        ?>
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title><?php echo htmlspecialchars($elemento['nombre']); ?></title>
+            <?php $this->estilos(); ?>
+        </head>
+        <body>
+
+        <div class="container">
+
+            <!-- Cabecera -->
+            <div class="detalle-cabecera">
+                <img src="<?php echo htmlspecialchars($elemento['imagen']); ?>"
+                     alt="<?php echo htmlspecialchars($elemento['nombre']); ?>"
+                     class="detalle-imagen">
+                <h1><?php echo htmlspecialchars($elemento['nombre']); ?></h1>
+            </div>
+
+            <!-- Panel de metadatos principales -->
+            <div class="panel">
+                <p><?php echo htmlspecialchars($elemento['detalle']); ?></p>
+            </div>
+
+            <!-- Bloque resumen con estadísticas del controlador -->
+            <div class="panel">
+                <h2>Resumen</h2>
+                <p class="total-resumen">
+                    Total: <?php echo $total . " " . htmlspecialchars($etiqueta); ?>
+                </p>
+
+                <?php if (empty($estadisticas['desglose'])): ?>
+                    <p class="mensaje-vacio">No hay datos para desglosar.</p>
+                <?php else: ?>
+                    <?php foreach ($estadisticas['desglose'] as $fila): ?>
+                        <div class="fila-stat">
+                            <div class="fila-stat-texto">
+                                <span><?php echo htmlspecialchars($fila['categoria']); ?></span>
+                                <span><?php echo $fila['cantidad']; ?> (<?php echo $fila['porcentaje']; ?>%)</span>
+                            </div>
+                            <div class="barra-fondo">
+                                <div class="barra-relleno" style="width: <?php echo $fila['porcentaje']; ?>%;"></div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+
+            <!-- Listado de subelementos -->
+            <h2>Listado completo</h2>
+            <?php if (empty($elemento['subelementos'])): ?>
+                <p class="mensaje-vacio">Este elemento no tiene <?php echo htmlspecialchars($config['etiqueta_plur']); ?>.</p>
+            <?php else: ?>
+                <?php foreach ($elemento['subelementos'] as $sub): ?>
+                    <div class="tarjeta-item">
+                        <div class="item-form">
+                            <div class="sub-nombre"><?php echo htmlspecialchars($sub['nombre']); ?></div>
+                            <div class="item-subtitulo"><?php echo htmlspecialchars($sub['detalle']); ?></div>
+                        </div>
+                        <span class="item-contador"><?php echo htmlspecialchars($sub['categoria']); ?></span>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+
+            <a href="index.php" class="btn-volver">&larr; Volver al listado</a>
         </div>
 
         </body>

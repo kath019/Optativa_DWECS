@@ -1,5 +1,5 @@
-<!--guarda datos-->
 <?php
+// Guarda los datos
 class ModelPilotos {
     // Array asociativo original de pilotos de Fórmula 1
     private array $pilotos = [
@@ -85,9 +85,9 @@ class ModelPilotos {
             $subelementos = [];
             foreach($info["titulos"] as $titulo){
                 $subelementos[] = [
-                    "nombre" => "Campeonato" .$titulo["anio"],
+                    "nombre" => "Campeonato " .$titulo["anio"],
                     "categoria" => $titulo["escuderia"],
-                    "detalle" => "Temporada" .$titulo["anio"]
+                    "detalle" => "Temporada " .$titulo["anio"]
                 ];
             }
             $datosNormalizados[] = [

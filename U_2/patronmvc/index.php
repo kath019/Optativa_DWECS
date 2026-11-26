@@ -1,6 +1,7 @@
 <?php
 require_once 'model_equipos.php';
 require_once 'model_pilotos.php';
+require_once 'model_personalizado.php';
 require_once 'controller.php';
 
 // =========================================================================
@@ -8,10 +9,15 @@ require_once 'controller.php';
 // =========================================================================
 $modelo = new ModelEquipos();
 //$modelo = new ModelPilotos();
+//$modelo = new ModelPersonalizado();
 
-// Recogemos el parámetro de ordenación enviado desde el formulario (si existe)
+// Parámetro ordenación enviado desde el formulario 
 $criterioOrden = $_POST['orden'] ?? 'nombre_asc';
 
-// Iniciamos el Controlador inyectándole el Modelo elegido
 $controlador = new Controller($modelo);
-$controlador->ejecutar($criterioOrden);
+
+if (isset($_POST['elemento'])) {
+    $controlador->ejecutarDetalle($_POST['elemento']);
+} else {
+    $controlador->ejecutar($criterioOrden);
+}

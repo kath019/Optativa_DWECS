@@ -1,5 +1,5 @@
-<!-- guarda datos-->
 <?php
+// Guarda los datos
 class ModelEquipos {
     // Array asociativo original de equipos de fútbol
     private array $liga = [
@@ -48,7 +48,7 @@ class ModelEquipos {
         ];
     }
 
-    // Devuelve los datos sin calcular totales (esa tarea pertenece al Controlador)
+    // Devuelve los datos sin calcular totales
     public function obtenerDatos(): array {
         $datosNormalizados = [];
         foreach ($this->liga as $nombreEquipo => $info) {
@@ -57,14 +57,14 @@ class ModelEquipos {
                 $subelementos[] = [
                     "nombre" => $nombreJugador,
                     "categoria" => $jugador["posicion"],
-                    "detalle" => "Dorsal" .$jugador["dorsal"]
+                    "detalle" => "Dorsal " .$jugador["dorsal"]
                 ];
             }
             $datosNormalizados[] = [
                 "nombre"       => $nombreEquipo,
                 "imagen"       => $info["escudo"],
                 "detalle"      => "Fundación: " . $info["fundacion"] . " · Entrenador: " . $info["entrenador"],
-                "subelementos" => $info["jugadores"]
+                "subelementos" => $subelementos
             ];
         }
         return $datosNormalizados;
