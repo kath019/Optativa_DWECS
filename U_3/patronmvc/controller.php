@@ -12,9 +12,7 @@ class Controller {
         $this->vista  = new View();
     }
 
-    /**
-     * Lógica negocio 1, calcula el total de subelementos de cada elemento
-     */
+    /*lógica negocio 1, calcula el total de subelementos de cada elemento*/
     public function calcularTotales(array $datos): array {
         $datosProcesados = [];
         foreach ($datos as $item) {
@@ -24,9 +22,7 @@ class Controller {
         return $datosProcesados;
     }
 
-    /**
-     * Lógica negocio 2, ordena según 'nombre_asc', 'nombre_desc', 'total_desc' o 'total_asc'
-     */
+    /*lógica negocio 2, ordena según 'nombre_asc', 'nombre_desc', 'total_desc' o 'total_asc'*/
     public function ordenarDatos(array $datos, string $criterio = 'nombre_asc'): array {
         usort($datos, function ($a, $b) use ($criterio) {
             switch ($criterio) {
@@ -45,9 +41,7 @@ class Controller {
         return $datos;
     }
 
-    /**
-     * Lógica negocio 3, localiza un elemento por su nombre dentro de los datos del modelo, devuelve null si no existe
-     */
+    /**lógica negocio 3, localiza un elemento por su nombre dentro de los datos del modelo, devuelve null si no existe*/
     public function buscarElemento(string $nombre): ?array {
         foreach ($this->modelo->obtenerDatos() as $item) {
             if ($item['nombre'] === $nombre) {
@@ -57,12 +51,10 @@ class Controller {
         return null;
     }
 
-    /**
-     * Lógica de negocio 4(estadísticas del detalle)
+    /**Lógica de negocio 4(estadísticas del detalle)
      * Devuelve
      *  ['total' => int,
-     *    'desglose' => [ ['categoria' => string, 'cantidad' => int, 'porcentaje' => float], ... ]]
-     */
+     *    'desglose' => [ ['categoria' => string, 'cantidad' => int, 'porcentaje' => float], ... ]]*/
     public function calcularEstadisticasDetalle(array $subelementos): array {
         $total = count($subelementos);
 

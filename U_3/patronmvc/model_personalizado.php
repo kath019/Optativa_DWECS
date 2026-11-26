@@ -1,6 +1,7 @@
 <?php
 // Guarda los datos: directores de cine y sus películas
 class ModelPersonalizado {
+    
     // Array asociativo original de directores
     private array $directores = [
         "Christopher Nolan" => [

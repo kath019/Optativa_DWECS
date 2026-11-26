@@ -7,9 +7,9 @@ require_once 'controller.php';
 // =========================================================================
 // CAMBIA AQUÍ EL MODELO PARA COMPROBAR CÓMO CAMBIA TODA LA PÁGINA
 // =========================================================================
-$modelo = new ModelEquipos();
+//$modelo = new ModelEquipos();
 //$modelo = new ModelPilotos();
-//$modelo = new ModelPersonalizado();
+$modelo = new ModelPersonalizado();
 
 // Parámetro ordenación enviado desde el formulario 
 $criterioOrden = $_POST['orden'] ?? 'nombre_asc';
